@@ -24,11 +24,11 @@ struct Data {
   return false;
   }
   
-  bool Empty(){
+ /* bool Empty(){
   if (tail==NULL)
   return true;
   return false;
-  }
+  }*/
   
   void tambahDataDepan(int dataBaru) {
   Data *baru;
@@ -47,6 +47,23 @@ struct Data {
   }
   }
   
+  void hapusDepan(){
+  if(!isEmpty()){
+  if(head->next!=head){
+  Data *hapus;
+  hapus=head;
+  Data *bantu;
+  for(bantu=head;bantu->next!=head;bantu=bantu->next){ }
+  bantu->next=head->next;
+  head=head->next;
+  delete hapus;
+  }
+  else {
+  depan();
+  }
+  }
+  }
+  
   void tambahDataBelakang(int dataBaru){
   Data *baru;
   baru=(Data*) malloc(sizeof(Data));
@@ -62,6 +79,22 @@ struct Data {
   baru->next=head;
   }
   }
+  
+  void hapusBelakang() {
+  Data *hapus,*bantu; 
+  if (isEmpty()==0){ 
+  hapus = head; 
+  if(head->next == head){ 
+  head = NULL; 
+  } 
+  else {  
+  for(bantu = head;bantu->next->next != head;bantu = bantu->next){ } 
+  hapus = bantu->next; 
+  bantu->next = head; 
+  delete hapus; 
+  } 
+  } 
+  } 
 
   
   void cetak(){
@@ -73,4 +106,13 @@ struct Data {
   bantu=bantu->next;
   } while(bantu!=head);
   }
+  }
+  
+  int main(){
+ 	tambahDataDepan(2);
+ 	tambahDataBelakang(3);
+  	hapusDepan();
+ 	hapusBelakang();
+  cetak();
+  return 0;
   }
