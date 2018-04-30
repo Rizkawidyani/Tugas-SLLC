@@ -35,3 +35,14 @@ struct Data {
   bantu->next=head;
   }
   }
+  
+  void cetak(){
+  if (!isEmpty()){
+  Data *bantu;
+  bantu=head;
+  do {
+  cout<<bantu->nilai<<" ";
+  bantu=bantu->next;
+  } while(bantu!=head);
+  }
+  }
