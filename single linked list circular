@@ -47,22 +47,7 @@ struct Data {
   }
   }
   
-  void hapusDepan(){
-  if(!isEmpty()){
-  if(head->next!=head){
-  Data *hapus;
-  hapus=head;
-  Data *bantu;
-  for(bantu=head;bantu->next!=head;bantu=bantu->next){ }
-  bantu->next=head->next;
-  head=head->next;
-  delete hapus;
-  }
-  else {
-  depan();
-  }
-  }
-  }
+ 
   
   void tambahDataBelakang(int dataBaru){
   Data *baru;
