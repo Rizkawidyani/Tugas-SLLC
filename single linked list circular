@@ -1,3 +1,4 @@
+ 
  #include <iostream>
   #include <stdlib.h>
   using namespace std;
@@ -24,56 +25,7 @@ struct Data {
   return false;
   }
   
- /* bool Empty(){
-  if (tail==NULL)
-  return true;
-  return false;
-  }*/
-  
-  void tambahDataDepan(int dataBaru) {
-  Data *baru;
-  baru=(Data*) malloc(sizeof(Data));
-  baru->nilai=dataBaru;
-  baru->next=baru;
-  if (isEmpty()){
-  head=baru;
-  head->next=head;
-  } else {
-  Data *bantu;
-  for (bantu=head;bantu->next!=head;bantu=bantu->next){ }
-  baru->next=head;
-  head=baru;
-  bantu->next=head;
-  }
-  }
-  
- #include <iostream>
-  #include <stdlib.h>
-  using namespace std;
-  
-struct Data {
-  int nilai;
-  Data *next;
-  Data *urut;
-  };
-  Data *head;
-  Data *tail;
-  
-  void depan(){
-  head=NULL;
-  }
-  
-  void belakang(){
-	tail=NULL;
- }
-  
-   bool isEmpty(){
-  if (head==NULL)
-  return true;
-  return false;
-  }
-  
- /* bool Empty(){
+ /* bool isEmpty(){
   if (tail==NULL)
   return true;
   return false;
