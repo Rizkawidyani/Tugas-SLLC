@@ -47,7 +47,124 @@ struct Data {
   }
   }
   
- 
+ #include <iostream>
+  #include <stdlib.h>
+  using namespace std;
+  
+struct Data {
+  int nilai;
+  Data *next;
+  Data *urut;
+  };
+  Data *head;
+  Data *tail;
+  
+  void depan(){
+  head=NULL;
+  }
+  
+  void belakang(){
+	tail=NULL;
+ }
+  
+   bool isEmpty(){
+  if (head==NULL)
+  return true;
+  return false;
+  }
+  
+ /* bool Empty(){
+  if (tail==NULL)
+  return true;
+  return false;
+  }*/
+  
+  void tambahDataDepan(int dataBaru) {
+  Data *baru;
+  baru=(Data*) malloc(sizeof(Data));
+  baru->nilai=dataBaru;
+  baru->next=baru;
+  if (isEmpty()){
+  head=baru;
+  head->next=head;
+  } else {
+  Data *bantu;
+  for (bantu=head;bantu->next!=head;bantu=bantu->next){ }
+  baru->next=head;
+  head=baru;
+  bantu->next=head;
+  }
+  }
+  
+  void hapusDepan(){
+  if(!isEmpty()){
+  if(head->next!=head){
+  Data *hapus;
+  hapus=head;
+  Data *bantu;
+  for(bantu=head;bantu->next!=head;bantu=bantu->next){ }
+  bantu->next=head->next;
+  head=head->next;
+  delete hapus;
+  }
+  else {
+  depan();
+  }
+  }
+  }
+  
+  void tambahDataBelakang(int dataBaru){
+  Data *baru;
+  baru=(Data*) malloc(sizeof(Data));
+  baru->nilai=dataBaru;
+  baru->next=baru;
+  if (isEmpty()){
+  head=baru;
+  head->next=head;
+  } else {
+  Data *bantu;
+  for (bantu=head;bantu->next!=head;bantu=bantu->next){ }
+  bantu->next=baru;
+  baru->next=head;
+  }
+  }
+  
+  void hapusBelakang() {
+  Data *hapus,*bantu; 
+  if (isEmpty()==0){ 
+  hapus = head; 
+  if(head->next == head){ 
+  head = NULL; 
+  } 
+  else {  
+  for(bantu = head;bantu->next->next != head;bantu = bantu->next){ } 
+  hapus = bantu->next; 
+  bantu->next = head; 
+  delete hapus; 
+  } 
+  } 
+  } 
+
+  
+  void cetak(){
+  if (!isEmpty()){
+  Data *bantu;
+  bantu=head;
+  do {
+  cout<<bantu->nilai<<" ";
+  bantu=bantu->next;
+  } while(bantu!=head);
+  }
+  }
+  
+  int main(){
+ 	tambahDataDepan(2);
+ 	tambahDataBelakang(3);
+  	hapusDepan();
+ 	hapusBelakang();
+  cetak();
+  return 0;
+  }
   
   void tambahDataBelakang(int dataBaru){
   Data *baru;
