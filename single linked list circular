@@ -8,13 +8,24 @@ struct Data {
   Data *urut;
   };
   Data *head;
+  Data *tail;
   
   void depan(){
   head=NULL;
   }
   
+  void belakang(){
+	tail=NULL;
+ }
+  
    bool isEmpty(){
   if (head==NULL)
+  return true;
+  return false;
+  }
+  
+  bool Empty(){
+  if (tail==NULL)
   return true;
   return false;
   }
@@ -35,6 +46,23 @@ struct Data {
   bantu->next=head;
   }
   }
+  
+  void tambahDataBelakang(int dataBaru){
+  Data *baru;
+  baru=(Data*) malloc(sizeof(Data));
+  baru->nilai=dataBaru;
+  baru->next=baru;
+  if (isEmpty()){
+  head=baru;
+  head->next=head;
+  } else {
+  Data *bantu;
+  for (bantu=head;bantu->next!=head;bantu=bantu->next){ }
+  bantu->next=baru;
+  baru->next=head;
+  }
+  }
+
   
   void cetak(){
   if (!isEmpty()){
